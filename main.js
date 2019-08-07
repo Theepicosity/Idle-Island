@@ -7,9 +7,9 @@ function woodClick(number){
     document.getElementById("wood").innerHTML = wood;
 };
 function stoneClick(number){
-	var randint = Math.floor(Math.random() * Math.floor(number+1));
+	var randint = Math.floor(Math.random() * shovelcurrent);
 	if (randint > 0) {
-		number = number + Math.floor(Math.random() * Math.floor(shovelcurrent-1))
+		number = number + Math.floor(Math.random() * (shovelcurrent-1))
 		stone = stone + number;
 		document.getElementById("stone").innerHTML = stone;
 	}
