@@ -30,7 +30,7 @@ function upgrade(number, position){
 		}
 	}
 	if (number == 2) {
-		var shovelcost = Math.floor(Math.pow(shovelcurrent, 7.2)) + 60;
+		var shovelcost = Math.floor(Math.pow(shovelcurrent, 7.2)) + 75;
 		if (wood >= shovelcost) {
 			wood = wood - shovelcost;
 			shovelcurrent++;
