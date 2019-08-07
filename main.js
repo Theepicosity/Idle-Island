@@ -1,9 +1,18 @@
 var wood = 0;
+var stone = 0;
 
 function woodClick(number){
 	number = number + Math.floor((Math.pow(axecurrent, 2)/4))
     wood = wood + number;
     document.getElementById("wood").innerHTML = wood;
+};
+function stoneClick(number){
+	var randint = Math.floor(Math.random() * Math.floor(number+1));
+	if (randint > 0) {
+		number = number + Math.floor(Math.random() * Math.floor(shovelcurrent-1))
+		stone = stone + number;
+		document.getElementById("stone").innerHTML = stone;
+	}
 };
 
 var axecurrent = 1;
@@ -28,6 +37,9 @@ function upgrade(number, position){
 			shovelcost = Math.floor(Math.pow(shovelcurrent, 7.2)) + 60;
 			document.getElementById("shovelcost").innerHTML = shovelcost + " wood";
 			document.getElementById("wood").innerHTML = wood;
+			document.getElementById("shovelvisible").style.visibility="visible";
+			document.getElementById("shovelpvisible").style.visibility="visible";
+			document.getElementById("stone").style.visibility="visible";
 		}
 	}
 };
@@ -36,6 +48,9 @@ function saveGame(){
 	"use strict";
 	var save = {
     wood: wood,
+	axecurrent: axecurrent,
+	stone: stone,
+	shovelcurrent: shovelcurrent,
 	};
 	localStorage.setItem("save",JSON.stringify(save));
 }
@@ -45,6 +60,16 @@ function loadGameOnStartup(){
 	var savegame = JSON.parse(localStorage.getItem("save"));
   if (typeof savegame.wood !== "undefined") wood = savegame.wood;
   document.getElementById("wood").innerHTML = wood;
+  if (typeof savegame.axecurrent !== "undefined") { axecurrent = savegame.axecurrent;
+	var axecost = Math.floor(Math.pow(axecurrent, 5.6)) + 50;
+	document.getElementById("axecost").innerHTML = axecost + " wood";
+  }
+  if (typeof savegame.stone !== "undefined") stone = savegame.stone;
+  document.getElementById("stone").innerHTML = stone;
+  if (typeof savegame.shovelcurrent !== "undefined"){ shovelcurrent = savegame.shovelcurrent;
+	var shovelcost = Math.floor(Math.pow(shovelcurrent, 7.2)) + 60;
+	document.getElementById("shovelcost").innerHTML = shovelcost + " wood";
+  }
 }
 
 function loadGame(){
@@ -52,6 +77,16 @@ function loadGame(){
 	var savegame = JSON.parse(localStorage.getItem("save"));
   if (typeof savegame.wood !== "undefined") wood = savegame.wood;
   document.getElementById("wood").innerHTML = wood;
+  if (typeof savegame.axecurrent !== "undefined") axecurrent = savegame.axecurrent; {
+	var axecost = Math.floor(Math.pow(axecurrent, 5.6)) + 50;
+	document.getElementById("axecost").innerHTML = axecost + " wood";
+  }
+  if (typeof savegame.stone !== "undefined") stone = savegame.stone;
+  document.getElementById("stone").innerHTML = stone;
+  if (typeof savegame.shovelcurrent !== "undefined"){ shovelcurrent = savegame.shovelcurrent;
+	var shovelcost = Math.floor(Math.pow(shovelcurrent, 7.2)) + 60;
+	document.getElementById("shovelcost").innerHTML = shovelcost + " wood";
+  }
 }
 
 function deleteSave(){
