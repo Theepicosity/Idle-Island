@@ -89,6 +89,11 @@ function loadGame(){
   }
 }
 
+var axecost = Math.floor(Math.pow(axecurrent, 5.6)) + 50;
+var shovelcost = Math.floor(Math.pow(shovelcurrent, 7.2)) + 60;
+document.getElementById("axecost").innerHTML = axecost + " wood";
+document.getElementById("shovelcost").innerHTML = shovelcost + " wood";
+
 function deleteSave(){
 	"use strict";
 	var deleteSave1 = prompt("Are you sure you want to do this? Type 'yes' if so.");
