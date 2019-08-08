@@ -1,4 +1,4 @@
-var wood = 10000;
+var wood = 0000;
 var stone = 0;
 
 function woodClick(number){
